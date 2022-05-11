@@ -16,3 +16,8 @@ def get_replies(request, pk):
     replies = Reply.objects.filter(comment=pk)
     serializer = ReplySerializer(replies, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def post_reply(request, pk):
+    
