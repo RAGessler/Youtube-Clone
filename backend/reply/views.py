@@ -18,7 +18,7 @@ def get_replies(request, pk):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def post_reply(request, pk):
-    serializer = ReplySerializer(data=request.data, comment=pk )
+    serializer = ReplySerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
     serializer.save()
     return Response(serializer.data, status=status.HTTP_201_CREATED)
