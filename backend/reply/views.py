@@ -13,9 +13,6 @@ from backend.reply import serializer
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_replies(request, pk):
-    reply_comment_param = request.query_params.get('comment')
-    replies = Reply.objects.all()
-    custom_response_dictionary = {}
-    if reply_comment_param == int(pk):
-
-    
+    replies = Reply.objects.filter(comment=pk)
+    serializer = ReplySerializer(replies, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
