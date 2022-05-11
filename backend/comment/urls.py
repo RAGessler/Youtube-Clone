@@ -1,8 +1,8 @@
 from django import urls
 from django.urls import path, include
-from comment import views
+from . import views
 
 urlpatterns = [
     path('', views.get_all_comments),
-    path('all/', views.get_all_comments),
+    path('all/<int:pk>/', views.get_all_comments)
 ]
