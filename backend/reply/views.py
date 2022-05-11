@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from .models import Reply
 from .serializer import ReplySerializer
+from comment.models import Comment
 
 # Create your views here.
 
@@ -17,9 +18,10 @@ def get_replies(request, pk):
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def post_reply(request):
+def post_reply(request, pk):
     serializer = ReplySerializer(data=request.data)
+    comment = get_object_or_404(Comment, pk=pk)
     if serializer.is_valid():
-        serializer.save(user=request.user)
+        serializer.save(user=request.user, comment=comment)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+

@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "d4409d57-7119-4339-bfae-1f3a18bc6341",
-		"name": "DRF_JWT_Backend",
+		"_postman_id": "351703b9-1ca6-4614-b3a9-2acb1fcb39b2",
+		"name": "YouTube_Clone",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -217,6 +217,189 @@
 								"api",
 								"cars",
 								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "GET all Comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/all/2/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"all",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET all Replies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzMTYwNDU5LCJpYXQiOjE2NTIyOTY0NTksImp0aSI6IjM0OWFkY2M1MDg4MzQwMTBiMGU4NDk0NzIzNjY1NGU0IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.VCt0_jNK6cbPiEU6jrnH6aZUPjyjr8N5r4oePTEx4ac",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/replies/1/view",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"replies",
+								"1",
+								"view"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST new comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzMTYwNDU5LCJpYXQiOjE2NTIyOTY0NTksImp0aSI6IjM0OWFkY2M1MDg4MzQwMTBiMGU4NDk0NzIzNjY1NGU0IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.VCt0_jNK6cbPiEU6jrnH6aZUPjyjr8N5r4oePTEx4ac",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": \"2\",\n    \"video_id\": \"3\",\n    \"text\": \"post comment from postman\",\n    \"likes\": 1999,\n    \"dislikes\": 1999\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/post/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"post",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT edit comment",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzMTYyNDkxLCJpYXQiOjE2NTIyOTg0OTEsImp0aSI6Ijk4NTliMThkM2RhMzQ4YTE4ODFmNTVlYmI5NTU3MWE3IiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.P1NNzNHHdbTSICMxkfRESEoyO4kW29FWIZP__PysC20",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": \"2\",\n    \"video_id\": \"3\",\n    \"text\": \"edit comment from postman\",\n    \"likes\": 1999,\n    \"dislikes\": 1999\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/edit/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"edit",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST new reply",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzMTYyODIyLCJpYXQiOjE2NTIyOTg4MjIsImp0aSI6IjFjODE2ZjI3ODVjZjQ4Y2I4YWZiMmI2NTk2NjEzYTczIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJkYW50aGVtYW4iLCJmaXJzdF9uYW1lIjoiRGFuaWVsIn0.9YSMq-X5efd-CeLuz52nki5f5HmI0Kxl0fTXDf38IvQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": \"2\",\n    \"comment\": \"2\",\n    \"text\": \"post reply from postman test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/replies/2/post",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"replies",
+								"2",
+								"post"
 							]
 						}
 					},
