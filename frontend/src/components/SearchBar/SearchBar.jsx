@@ -1,4 +1,16 @@
 const SearchBar = (props) => {
-    return(<h1>This is the search bar</h1>)
+
+
+    function handleSubmit(){
+        console.log('hello')
+    }
+//https://www.googleapis.com/youtube/v3/search?q=cats&key=AIzaSyB2zDVfGZtdLQ4g3RO7QFmwT1RJ_kRI0Bs&type=video&maxResults=5
+
+    return(
+        <form onSubmit={handleSubmit}>
+            <input type="text" name="Search" placeholder="Search Videos" id="" />
+            <button type="submit">Search</button>
+        </form>
+    )
 }
 export default SearchBar
