@@ -2,16 +2,17 @@ import React from "react";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import SearchBar from "../../components/SearchBar/SearchBar";
-
+import { DATA } from "../../localData"
 import axios from "axios";
 import CommentForm from "../../components/CommentForm/CommentForm";
 
-const HomePage = () => {
+const HomePage = (props) => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
   // The "token" value is the JWT token that you will send in the header of any request requiring authentication
   //TODO: Add an AddCars Page to add a car for a logged in user's garage
   const [user, token] = useAuth();
   const [cars, setCars] = useState([]);
+  const [videos, setVideos] = useState(DATA);
 
   useEffect(() => {
     const fetchCars = async () => {
@@ -28,13 +29,14 @@ const HomePage = () => {
     };
     fetchCars();
   }, [token]);
+
   return (
     <div className="container">
-      <h1>Home Page for {user.username} {user.first_name} !</h1>
-      {cars &&
-        cars.map((car) => (
-          <p key={car.id}>
-            {car.year} {car.make} {car.model}
+      <h1>Welcome {user.first_name}! Choose from suggest videos below or type in your search above.</h1>
+      {videos &&
+        videos.items.map((video) => (
+          <p key={video.id.videoId}>
+            {video.id.videoId}
           </p>
         ))}
         <CommentForm />

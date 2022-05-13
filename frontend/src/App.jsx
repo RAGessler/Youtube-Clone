@@ -1,6 +1,7 @@
 // General Imports
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import { DATA } from "./localData";
 
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
@@ -14,6 +15,8 @@ import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
+import { useState } from "react";
+
 
 
 function App() {
