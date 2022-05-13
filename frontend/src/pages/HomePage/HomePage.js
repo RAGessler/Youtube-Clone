@@ -33,8 +33,8 @@ const HomePage = (props) => {
   return (
     <div className="container">
       <h1>Welcome {user.first_name}! Choose from suggest videos below or type in your search above.</h1>
-      {videos &&
-        videos.items.map((video) => (
+      {props.videos &&
+        props.videos.items.map((video) => (
           <p key={video.id.videoId}>
             {video.id.videoId}
           </p>

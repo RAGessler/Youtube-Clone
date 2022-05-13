@@ -13,7 +13,7 @@ const VideoPage = (props) => {
             <VideoPlayer />
             <CommentForm></CommentForm>
             <CommentList></CommentList>
-            <RelatedVideos></RelatedVideos>
+            <RelatedVideos videos={props.videos}></RelatedVideos>
         </div>
      );
 }

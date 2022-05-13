@@ -20,6 +20,10 @@ import { useState } from "react";
 
 
 function App() {
+
+  const [suggestedVideos, setSuggestedVideos] = useState(DATA);
+  const [relatedVideos, setRelatedVideos] =useState(DATA);
+
   return (
     <div>
       <Navbar />
@@ -28,13 +32,13 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              <HomePage />
+              <HomePage videos={suggestedVideos} />
             </PrivateRoute>
           }
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/video" element={<VideoPage />} />
+        <Route path="/video" element={<VideoPage videos={relatedVideos} />} />
       </Routes>
       <Footer />
     </div>
