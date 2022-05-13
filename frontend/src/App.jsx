@@ -23,6 +23,12 @@ function App() {
 
   const [suggestedVideos, setSuggestedVideos] = useState(DATA);
   const [relatedVideos, setRelatedVideos] =useState(DATA);
+  const [comments, setComments] = useState([])
+
+  async function getVideoComments(videoId){
+    let response = await axios.get(`http://127.0.0.1:8000/api/comments/all/${videoId}/`);
+    setComments(response.data);
+  }
 
   return (
     <div>
@@ -38,7 +44,7 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/video" element={<VideoPage videos={relatedVideos} />} />
+        <Route path="/video" element={<VideoPage videos={relatedVideos} comments={comments} getVideoComments={getVideoComments}/>} />
       </Routes>
       <Footer />
     </div>
