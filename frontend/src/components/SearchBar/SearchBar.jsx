@@ -1,16 +1,34 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 const SearchBar = (props) => {
+    let Navigate = useNavigate();
+    const [searchQuery, setSearchQuery] = useState();
 
 
-    function handleSubmit(){
-        console.log('hello')
+    function handleClick(query){
+        Navigate(`/results/${query}`)
     }
-//https://www.googleapis.com/youtube/v3/search?q=cats&key=AIzaSyB2zDVfGZtdLQ4g3RO7QFmwT1RJ_kRI0Bs&type=video&maxResults=5
 
     return(
-        <form onSubmit={handleSubmit}>
-            <input type="text" name="Search" placeholder="Search Videos" id="" />
-            <button type="submit">Search</button>
-        </form>
+        <div className="container">
+            <form className="form">
+                <ul>
+                    <li>
+                        <input
+                            type="text"
+                            name="searchQuery"
+                            value={searchQuery}
+                            placeholder="Search"
+                            onChange={(event) => setSearchQuery(event.target.value)}
+                        />
+                    </li>
+                    <li>
+                        <button onClick={() => handleClick(searchQuery)}> </button>
+                    </li>
+                </ul>
+            </form>
+        </div>
     )
 }
 export default SearchBar

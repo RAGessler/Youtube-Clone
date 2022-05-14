@@ -17,6 +17,7 @@ import Footer from "./components/Footer/Footer";
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
 import { useState } from "react";
+import SearchPage from "./pages/SearchPage/SearchPage";
 
 
 
@@ -29,6 +30,11 @@ function App() {
   async function getVideoComments(videoId){
     let response = await axios.get(`http://127.0.0.1:8000/api/comments/all/${videoId}/`);
     setComments(response.data);
+  }
+
+  async function searchVideos(searchQuery){
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchQuery}&key=AIzaSyB2zDVfGZtdLQ4g3RO7QFmwT1RJ_kRI0Bs&type=video&part=snippet&fields=items(snippet)&maxResults=10`)
+    setSuggestedVideos(response.data)
   }
 
   return (
@@ -46,6 +52,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/video/:videoId" element={<VideoPage videos={relatedVideos} comments={comments} getVideoComments={getVideoComments}/>} />
+        <Route path="/results/:searchQuery" element={<SearchPage videos={suggestedVideos} searchVideos={searchVideos}/>} />
       </Routes>
       <Footer />
     </div>
