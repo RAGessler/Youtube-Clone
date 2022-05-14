@@ -2,6 +2,7 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { DATA } from "./localData";
+import axios from "axios";
 
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
@@ -44,7 +45,7 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/video" element={<VideoPage videos={relatedVideos} comments={comments} getVideoComments={getVideoComments}/>} />
+        <Route path="/video/:videoId" element={<VideoPage videos={relatedVideos} comments={comments} getVideoComments={getVideoComments}/>} />
       </Routes>
       <Footer />
     </div>
