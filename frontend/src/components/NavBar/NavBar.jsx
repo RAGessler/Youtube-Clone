@@ -17,7 +17,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <SearchBar />
+          <button><a href="/results/">Search</a></button>
         </li>
         <li>
           {user ? (

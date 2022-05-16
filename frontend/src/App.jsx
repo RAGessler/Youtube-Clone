@@ -18,6 +18,7 @@ import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./utils/PrivateRoute";
 import { useEffect, useState } from "react";
 import SearchPage from "./pages/SearchPage/SearchPage";
+import SearchBar from "./components/SearchBar/SearchBar";
 
 
 
@@ -26,6 +27,8 @@ function App() {
   const [suggestedVideos, setSuggestedVideos] = useState(DATA);
   const [relatedVideos, setRelatedVideos] =useState(DATA);
   const [comments, setComments] = useState([])
+  const [searchedVideos, setSearchedVideos] = useState([])
+
 
   async function getVideoComments(videoId){
     let response = await axios.get(`http://127.0.0.1:8000/api/comments/all/${videoId}/`);
@@ -33,14 +36,16 @@ function App() {
   }
 
   async function searchVideos(searchQuery){
-    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchQuery}&key=AIzaSyB2zDVfGZtdLQ4g3RO7QFmwT1RJ_kRI0Bs&type=video&part=snippet&fields=items(snippet)&maxResults=10`)
-    console.log(response.data)
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchQuery}&key=AIzaSyDhfnwEvEuZjfnIgfxvbAKgZW-XvFnd2Xc&type=video&part=snippet&fields=items(snippet)&maxResults=10`)
+    setSearchedVideos(response.data)
+    console.log('sv', searchedVideos)
   }
 
   return (
     <div>
 
       <Navbar />
+      <SearchBar submitSearch={searchVideos}/>
       <Routes>
         <Route
           path="/"
@@ -53,7 +58,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/video/:videoId" element={<VideoPage videos={relatedVideos} comments={comments} getVideoComments={getVideoComments}/>} />
-        <Route path="/results/:searchQuery" element={<SearchPage videos={suggestedVideos} searchVideos={searchVideos}/>} />
+        <Route path="/results" element={<SearchPage videos={searchedVideos}/>} />
       </Routes>
       <Footer />
     </div>
