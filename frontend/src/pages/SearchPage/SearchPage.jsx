@@ -34,6 +34,7 @@ const SearchPage = (props) => {
         searchResults.items.map((video) => (
           <p key={video.id.videoId}>
              {video.snippet.title}
+             <a href={`/video/${video.id.videoId}`}>Watch Video</a>
           </p>
         ))}
     </div>)

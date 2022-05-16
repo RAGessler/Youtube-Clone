@@ -18,6 +18,7 @@ const VideoPage = (props) => {
             <CommentForm></CommentForm>
             <CommentList comments={props.comments} getVideoComments={props.getVideoComments} videoId={videoId} ></CommentList>
             <RelatedVideos videos={props.videos}></RelatedVideos>
+            
         </div>
      );
 }
