@@ -11,7 +11,6 @@ const SearchPage = (props) => {
     function handleSubmit(videoId){
         // event.preventDefault();
         let newVideoId = videoId
-        console.log(newVideoId)
         props.submitVideoInfo(newVideoId)
     }
 
@@ -23,7 +22,7 @@ const SearchPage = (props) => {
                         <div className='card' key={element}>
                             <h3>{video.snippet.title}</h3>
                             <h3>{video.id.videoId}</h3>
-                            <h4><a href={`/video/${video.id.videoId}`} onClick={()=>{handleSubmit(video.id.videoId)}}>Play Video</a></h4>
+                            <h4><a onClick={()=>{handleSubmit(video.id.videoId)}}>Play Video</a></h4>
                         </div>
                     )
                 })}

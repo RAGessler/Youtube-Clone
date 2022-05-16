@@ -9,27 +9,18 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 const VideoPage = (props) => {
+    useEffect(()=>{
+        console.log('whole object:',props.selectedVideo)
+    },[])
 
-    const {videoId} = useParams()
-    
-
-    useEffect (() => {
-        props.getVideoInfo(videoId)
-        console.log(props.selectedVideo)
-    }, [props.selectedVideo])
-
-    
-    
-
-    
     return ( 
         <div>
-            <h1>{props.selectedVideo.id.videoId}</h1>
+            <h1>{props.selectedVideo.snippet.title}</h1>
             <div>{props.selectedVideo.snippet.description}</div>
-            <VideoPlayer />
-            <CommentForm></CommentForm>
-            <CommentList comments={props.comments} getVideoComments={props.getVideoComments} videoId={videoId} ></CommentList>
-            <RelatedVideos videos={props.videos}></RelatedVideos>
+            <VideoPlayer videoId={props.selectedVideo.id.videoId} />
+            <CommentForm videoId={props.selectedVideo.id.videoId}></CommentForm>
+            {/* <CommentList comments={props.comments} getVideoComments={props.getVideoComments} videoId={props.selectedVideo.id.videoId} ></CommentList> */}
+            {/* <RelatedVideos videos={props.videos}></RelatedVideos> */}
 
         </div>
      );

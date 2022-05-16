@@ -6,7 +6,7 @@ import axios from 'axios'
 
 let initialValues = {
         user: "2",
-        video_id: "2",
+        video_id: '2',
         text: "",
         likes: "0",
         dislikes: "0"
@@ -35,6 +35,7 @@ const CommentForm = (props) =>{
         }
 
     }
+    const [VideoId, setVideoId] = useState('')
 
     return (
         <div className="container">

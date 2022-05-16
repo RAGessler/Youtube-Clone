@@ -29,7 +29,8 @@ function App() {
   const [relatedVideos, setRelatedVideos] =useState(DATA);
   const [comments, setComments] = useState([])
   const [searchedVideos, setSearchedVideos] = useState([])
-  const [selectedVideo, setSelectedVideo] = useState({})
+  const [selectedVideo, setSelectedVideo] = useState('')
+  const navigate = useNavigate()
 
   async function getVideoComments(videoId){
     let response = await axios.get(`http://127.0.0.1:8000/api/comments/all/${videoId}/`);
@@ -41,14 +42,8 @@ function App() {
     setSearchedVideos(response.data.items)
   }
 
-//   async function getVideoInfo(videoId){
-//     let response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=AIzaSyDU5w61sXAn96W8V1MW2c0NI3l75iYyW0w&part=snippet&fields=items(id,snippet)`)
-//     console.log(response.data)
-//     setSelectedVideo(response.data)
-// }
-
-  function selectVideo(id) {
-    let selectedVideo = searchedVideos.filter((el) => {
+  function pickVideo(id) {
+    let result = searchedVideos.filter((el) => {
       if(el.id.videoId === id){
         return true;
       }
@@ -56,12 +51,14 @@ function App() {
         return false;
       }
     })
-    setSelectedVideo(selectedVideo)
+    setSelectedVideo(result[0])
   }
 
   useEffect(() => {
-    console.log('potato',searchedVideos)
-  },[searchedVideos]) //Runs when searched videos changes
+    if(selectedVideo !== ''){
+    console.log('selectedVideo:',selectedVideo)
+    navigate(`/video/${selectedVideo.id.videoId}`)
+    }},[selectedVideo])
   return (
     <div>
 
@@ -78,8 +75,8 @@ function App() {
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/video/:videoId" element={<VideoPage videos={relatedVideos} comments={comments} getVideoComments={getVideoComments} getVideoInfo={getVideoInfo} selectedVideo={selectedVideo}/>} />
-        <Route path="/results" element={<SearchPage videos={searchedVideos} />} />
+        <Route path="/video/:videoId" element={<VideoPage selectedVideo={selectedVideo}/>} />
+        <Route path="/results" element={<SearchPage videos={searchedVideos} submitVideoInfo={pickVideo} />} />
       </Routes>
       <Footer />
     </div>
