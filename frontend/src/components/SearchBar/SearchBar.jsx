@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 
+
 const SearchBar = (props) => {
     const [searchTerm, setSearchTerm] = useState('')
+    const navigate = useNavigate();
 
     function handleSubmit(event){
         event.preventDefault();
         let newSearchTem = searchTerm
         console.log(newSearchTem)
         props.submitSearch(newSearchTem)
+        navigate('/results')
     }
 
     return(

@@ -14,17 +14,13 @@ const VideoPage = (props) => {
     const {videoId} = useParams()
     
 
-    useEffect (() => {
-        getVideoInfo(videoId)
-    }, [])
+    // useEffect (() => {
+    //     getVideoInfo(videoId)
+    // }, [])
 
     
     
-    async function getVideoInfo(videoId){
-        let response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=AIzaSyB2zDVfGZtdLQ4g3RO7QFmwT1RJ_kRI0Bs&part=snippet&fields=items(id,snippet)`)
-        console.log(response.data)
-        setVideoInfo(response.data)
-    }
+
     
     return ( 
         <div>

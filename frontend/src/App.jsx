@@ -16,9 +16,10 @@ import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import SearchBar from "./components/SearchBar/SearchBar";
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 
@@ -28,7 +29,7 @@ function App() {
   const [relatedVideos, setRelatedVideos] =useState(DATA);
   const [comments, setComments] = useState([])
   const [searchedVideos, setSearchedVideos] = useState([])
-
+  const [selectedVideo, setSelectedVideo] = useState({})
 
   async function getVideoComments(videoId){
     let response = await axios.get(`http://127.0.0.1:8000/api/comments/all/${videoId}/`);
@@ -37,10 +38,18 @@ function App() {
 
   async function searchVideos(searchQuery){
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchQuery}&key=AIzaSyDhfnwEvEuZjfnIgfxvbAKgZW-XvFnd2Xc&type=video&part=snippet&fields=items(snippet)&maxResults=10`)
-    setSearchedVideos(response.data)
-    console.log('sv', searchedVideos)
+    setSearchedVideos(response.data.items)
   }
 
+  async function getVideoInfo(videoId){
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=AIzaSyB2zDVfGZtdLQ4g3RO7QFmwT1RJ_kRI0Bs&part=snippet&fields=items(id,snippet)`)
+    console.log(response.data)
+    setSelectedVideo(response.data)
+}
+
+  useEffect(() => {
+    console.log('potato',searchedVideos)
+  },[searchedVideos]) //Runs when searched videos changes
   return (
     <div>
 
@@ -58,7 +67,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/video/:videoId" element={<VideoPage videos={relatedVideos} comments={comments} getVideoComments={getVideoComments}/>} />
-        <Route path="/results" element={<SearchPage videos={searchedVideos}/>} />
+        <Route path="/results" element={<SearchPage videos={searchedVideos} submitVideoInfo={getVideoInfo}/>} />
       </Routes>
       <Footer />
     </div>
