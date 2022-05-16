@@ -6,10 +6,10 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 
 
 const SearchPage = (props) => {
-    const [videoId, setVideoId] = useState('')
+    // const [videoId, setVideoId] = useState('')
 
-    function handleSubmit(event){
-        event.preventDefault();
+    function handleSubmit(videoId){
+        // event.preventDefault();
         let newVideoId = videoId
         console.log(newVideoId)
         props.submitVideoInfo(newVideoId)
@@ -22,8 +22,8 @@ const SearchPage = (props) => {
                     return(
                         <div className='card' key={element}>
                             <h3>{video.snippet.title}</h3>
-                            <h4><a href={`/video/${video.id}`} onClick={function(event){
-                                setVideoId(video.id); handleSubmit()}}  >Play Video</a></h4>
+                            <h3>{video.id.videoId}</h3>
+                            <h4><a href={`/video/${video.id.videoId}`} onClick={()=>{handleSubmit(video.id.videoId)}}>Play Video</a></h4>
                         </div>
                     )
                 })}

@@ -10,13 +10,13 @@ import { useParams } from "react-router-dom";
 
 const VideoPage = (props) => {
 
-    const [videoInfo, setVideoInfo] = useState({})
     const {videoId} = useParams()
     
 
-    // useEffect (() => {
-    //     getVideoInfo(videoId)
-    // }, [])
+    useEffect (() => {
+        props.getVideoInfo(videoId)
+        console.log(props.selectedVideo)
+    }, [props.selectedVideo])
 
     
     
@@ -24,8 +24,8 @@ const VideoPage = (props) => {
     
     return ( 
         <div>
-            <h1>{videoInfo.id}</h1>
-            <div>{videoInfo.snippet.description}</div>
+            <h1>{props.selectedVideo.id.videoId}</h1>
+            <div>{props.selectedVideo.snippet.description}</div>
             <VideoPlayer />
             <CommentForm></CommentForm>
             <CommentList comments={props.comments} getVideoComments={props.getVideoComments} videoId={videoId} ></CommentList>
