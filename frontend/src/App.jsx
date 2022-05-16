@@ -16,7 +16,7 @@ import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchPage from "./pages/SearchPage/SearchPage";
 
 
@@ -34,11 +34,12 @@ function App() {
 
   async function searchVideos(searchQuery){
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchQuery}&key=AIzaSyB2zDVfGZtdLQ4g3RO7QFmwT1RJ_kRI0Bs&type=video&part=snippet&fields=items(snippet)&maxResults=10`)
-    setSuggestedVideos(response.data)
+    console.log(response.data)
   }
 
   return (
     <div>
+
       <Navbar />
       <Routes>
         <Route
