@@ -6,7 +6,7 @@ const VideoPlayer = (props)=>{
     const {videoId} = useParams()
 
     return(<div>
-        <iframe src={`https://www.youtube.com/embed/${video.id.videoId}`} frameborder="0"></iframe>
+        <iframe src={`https://www.youtube.com/embed/${videoId}`} frameborder="0"></iframe>
     </div>
     
         )

@@ -9,9 +9,18 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 const VideoPage = (props) => {
+    const [videoInfo, setVideoInfo] = useState()
+
     
     const {videoId} = useParams()
-
+    
+    async function getVideoInfo(videoId){
+        let response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}key=APIKEY
+        &part=snippet&fields=items(snippet)`)
+        setVideoInfo(response.data)
+        console.log(response.data)
+    }
+    
     return ( 
         <div>
             <VideoPlayer />
