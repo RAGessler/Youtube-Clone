@@ -26,7 +26,12 @@ const VideoPage = (props) => {
             <div>{props.selectedVideo.snippet.description}</div>
             <VideoPlayer videoId={props.selectedVideo.id.videoId} />
             <CommentForm videoId={props.selectedVideo.id.videoId} getVideoComments={props.getVideoComments}></CommentForm>
-            <CommentList comments={props.comments} getVideoComments={props.getVideoComments} videoId={props.selectedVideo.id.videoId}></CommentList>
+            <CommentList 
+            comments={props.comments} 
+            getVideoComments={props.getVideoComments} 
+            videoId={props.selectedVideo.id.videoId}
+            >
+            </CommentList>
             <RelatedVideos relatedVideos={props.searchedVideos} getRelatedVideos={props.getRelatedVideos} pickVideo={props.pickVideo} ></RelatedVideos>
 
         </div>

@@ -15,7 +15,6 @@ let initialValues = {
 
 const CommentForm = (props) =>{
     const [user, token] = useAuth();
-    const navigate = useNavigate();
     const [videoId, setvideoId] = useState(props.videoId)
     const [formData, handleInputChange, handleSubmit] = useCustomForm(
         initialValues,

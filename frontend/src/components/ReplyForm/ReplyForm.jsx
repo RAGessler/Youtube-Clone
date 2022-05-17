@@ -26,7 +26,9 @@ const ReplyForm = (props) => {
                     Authorization: 'Bearer '+ token
                 }
             })
-            Navigate('/')
+            if (response.status === 201){
+                await props.getCommentReplies(commentId)
+            }
         } catch (error){
             console.log(error.message);
         }
