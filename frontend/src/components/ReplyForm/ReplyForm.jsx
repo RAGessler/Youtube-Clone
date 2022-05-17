@@ -40,7 +40,7 @@ const ReplyForm = (props) => {
                 <button type="submit">Reply</button>
             </form>
         </div>
-
     )
 }
+
 export default ReplyForm

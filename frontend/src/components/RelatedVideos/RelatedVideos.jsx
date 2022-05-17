@@ -2,19 +2,24 @@ import { DATA } from "../../localData"
 import React, { useState } from 'react';
 
 
-const RelatedVideos = (props) =>{
 
-    //https://www.googleapis.com/youtube/v3/search?relatedToVideoId={VIDEO ID HERE}&type=video&key={API KEY HERE}
+
+const RelatedVideos = (props) =>{  
+
+  function handleClick(videoId){
+    props.pickVideo(videoId)
+  }
 
     return(
         <div className="container">
       <h1>Related Videos</h1>
-      {props.videos &&
-        props.videos.items.map((video) => (
-          <p key={video.id.videoId}>
-            {video.id.videoId}
-          </p>
-        ))}
+      {props.relatedVideos &&
+        props.relatedVideos.map((video) => {
+         return <p key={video.id.videoId}>
+            {video.snippet.title}
+            <img src={video.snippet.thumbnails.default.url} onClick={() => {handleClick(video.id.videoId)}} />
+          </p> }
+         )}
     </div>
         )
 }
