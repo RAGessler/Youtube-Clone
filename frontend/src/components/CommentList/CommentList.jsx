@@ -21,7 +21,7 @@ const CommentList = (props) =>{
                   <h4>dislikes:{el.dislikes}</h4>
                     <LikeDislike comment={el} videoId={el.video_id}/>
                     <div className='replies'> <Reply comment={el.id} /> </div>
-                    <div className='replyForm'> <ReplyForm comment={el.id} /> </div>
+                    <div className='replyForm'> <ReplyForm comment={el} /> </div>
                 </div>
                 )
               })}
