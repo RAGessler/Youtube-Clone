@@ -1,12 +1,13 @@
-import React from "react"
+import React, { useState } from "react"
 import { Navigate, useNavigate } from "react-router-dom"
 import useAuth from "../../hooks/useAuth"
 import useCustomForm from "../../hooks/useCustomForm"
 import axios from 'axios'
+import { useParams } from "react-router-dom";
 
 let initialValues = {
         user: "2",
-        video_id: '2',
+        video_id:'',
         text: "",
         likes: "0",
         dislikes: "0"
@@ -17,13 +18,16 @@ let initialValues = {
 const CommentForm = (props) =>{
     const [user, token] = useAuth();
     const navigate = useNavigate();
+    const [videoId, setvideoId] = useState(props.videoId)
     const [formData, handleInputChange, handleSubmit] = useCustomForm(
-        initialValues, 
+        initialValues,
         postNewComment
         );
+        
 
     async function postNewComment(){
         try {
+            formData.video_id=videoId
             let response = await axios.post('http://127.0.0.1:8000/api/comments/post/', formData, {
                 headers: {
                     Authorization: 'Bearer ' + token
@@ -35,7 +39,7 @@ const CommentForm = (props) =>{
         }
 
     }
-    const [VideoId, setVideoId] = useState('')
+
 
     return (
         <div className="container">
