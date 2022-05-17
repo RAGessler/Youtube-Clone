@@ -38,7 +38,7 @@ function App() {
   }
 
   async function searchVideos(searchQuery){
-    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchQuery}&key=AIzaSyDU5w61sXAn96W8V1MW2c0NI3l75iYyW0w&type=video&part=snippet&fields=items(id,snippet)&maxResults=10`)
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchQuery}&key=AIzaSyDOHkOHHBMlOGoxPWpgeOQaOvS3EVixTuI&type=video&part=snippet&fields=items(id,snippet)&maxResults=10`)
     setSearchedVideos(response.data.items)
   }
 

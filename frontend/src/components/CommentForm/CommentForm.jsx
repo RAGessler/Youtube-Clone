@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Navigate, useNavigate } from "react-router-dom"
 import useAuth from "../../hooks/useAuth"
 import useCustomForm from "../../hooks/useCustomForm"
@@ -13,8 +13,6 @@ let initialValues = {
         dislikes: "0"
 };
 
-
-
 const CommentForm = (props) =>{
     const [user, token] = useAuth();
     const navigate = useNavigate();
@@ -23,7 +21,6 @@ const CommentForm = (props) =>{
         initialValues,
         postNewComment
         );
-        
 
     async function postNewComment(){
         try {
@@ -33,11 +30,12 @@ const CommentForm = (props) =>{
                     Authorization: 'Bearer ' + token
                 }
             })
-            navigate("/")
+            if (response.status === 201){
+                await props.getVideoComments(videoId)
+            }
         } catch (error) {
             console.log(error.message);
         }
-
     }
 
 
