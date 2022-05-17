@@ -9,8 +9,15 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 const VideoPage = (props) => {
+
+    const videoId = useParams();
+
     useEffect(()=>{
         console.log('whole object:',props.selectedVideo)
+    },[])
+
+    useEffect(() => {
+        props.getRelatedVideos(videoId)
     },[])
 
     return ( 
@@ -20,7 +27,7 @@ const VideoPage = (props) => {
             <VideoPlayer videoId={props.selectedVideo.id.videoId} />
             <CommentForm videoId={props.selectedVideo.id.videoId} getVideoComments={props.getVideoComments}></CommentForm>
             <CommentList comments={props.comments} getVideoComments={props.getVideoComments} videoId={props.selectedVideo.id.videoId}></CommentList>
-            {/* <RelatedVideos videos={props.videos}></RelatedVideos> */}
+            <RelatedVideos relatedVideos={props.searchedVideos} getRelatedVideos={props.getRelatedVideos} pickVideo={props.pickVideo} ></RelatedVideos>
 
         </div>
      );
