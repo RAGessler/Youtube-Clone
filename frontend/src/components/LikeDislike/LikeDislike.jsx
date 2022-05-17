@@ -9,7 +9,7 @@ const LikeDislike = (props) => {
         let body={}
         if (like === true){
             body = {
-                user_id: props.comment.user.id,
+                user: props.comment.user,
                 video_id: props.comment.video_id,
                 text: props.comment.text,
                 likes: props.comment.likes +1,
@@ -17,7 +17,7 @@ const LikeDislike = (props) => {
             }}
             else if (dislike === true){
                 body = {
-                    user_id: props.comment.user.id,
+                    user: props.comment.user,
                     video_id: props.comment.video_id,
                     text: props.comment.text,
                     likes: props.comment.likes,
