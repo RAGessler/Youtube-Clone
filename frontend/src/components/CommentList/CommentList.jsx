@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
-import Comment from "../Comment/Comment"
+import LikeDislike from '../LikeDislike/LikeDislike';
 
 const CommentList = (props) =>{
 
@@ -14,7 +13,11 @@ const CommentList = (props) =>{
       {props.comments.map((el) => {              
                 return(
                 <div key={el.id}>
-                    <Comment user={el.user.first_name} videoId={el.video_id} comment={el.text} likes={el.likes} dislikes={el.dislikes} />
+                  <h2>user={el.user.first_name}</h2>
+                  <h3>comment={el.text}</h3>
+                  <h4>likes={el.likes}</h4>
+                  <h4>dislikes={el.dislikes}</h4>
+                    <LikeDislike videoId={el.video_id}/>
                 </div>
                 )
               })}
