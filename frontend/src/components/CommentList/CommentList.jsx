@@ -17,7 +17,7 @@ const CommentList = (props) =>{
                   <h3>comment={el.text}</h3>
                   <h4>likes={el.likes}</h4>
                   <h4>dislikes={el.dislikes}</h4>
-                    <LikeDislike videoId={el.video_id}/>
+                    <LikeDislike comment={el} videoId={el.video_id}/>
                 </div>
                 )
               })}
