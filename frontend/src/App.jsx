@@ -26,7 +26,8 @@ import { Navigate, useNavigate } from 'react-router-dom';
 
 function App() {
 
-  const [suggestedVideos, setSuggestedVideos] = useState(DATA);
+  const [suggestedVideos, setSuggestedVideos] = useState([]);
+  const [defaultSearch, setDefaultSearch] = useState('React Tutorials')
   const [comments, setComments] = useState([])
   const [searchedVideos, setSearchedVideos] = useState([])
   const [selectedVideo, setSelectedVideo] = useState('')
@@ -37,13 +38,13 @@ function App() {
     setComments(response.data);
   }
 
-  async function searchVideos(searchQuery){
+  async function searchVideos(searchQuery=defaultSearch){
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchQuery}&key=${KEY}&type=video&part=snippet&fields=items(id,snippet)&maxResults=10`)
     setSearchedVideos(response.data.items)
   }
 
   async function getRelatedVideos(videoId){
-    let response = await axios.get(`//https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&type=video&key=AIzaSyDU5w61sXAn96W8V1MW2c0NI3l75iYyW0w`)
+    let response = await axios.get(`//https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&type=video&key=${KEY}`)
     setSearchedVideos(response.data.items)
   }
 
@@ -74,7 +75,7 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              <HomePage videos={suggestedVideos} />
+              <HomePage videos={searchedVideos} getSuggestedVideos={searchVideos} />
             </PrivateRoute>
           }
         />

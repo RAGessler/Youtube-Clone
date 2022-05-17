@@ -29,13 +29,18 @@ const HomePage = (props) => {
   //   fetchCars();
   // }, [token]);
 
+  useEffect(() => {        
+    props.getSuggestedVideos()
+},[])
+
   return (
     <div className="container">
       <h1>Welcome {user.first_name}! Choose from suggest videos below or type in your search above.</h1>
       {props.videos &&
-        props.videos.items.map((video) => (
+        props.videos.map((video) => (
           <p key={video.id.videoId}>
-            {video.id.videoId}
+            {video.snippet.title}
+            <img src={video.snippet.thumbnails.default.url} />
           </p>
         ))}
         <CommentForm />

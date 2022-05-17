@@ -17,6 +17,7 @@ const VideoPage = (props) => {
     },[])
 
     useEffect(() => {
+        
         props.getRelatedVideos(videoId)
     },[])
 
