@@ -9,7 +9,7 @@ const LikeDislike = (props) => {
         let body={}
         if (like === true){
             body = {
-                user: props.comment.user.id,
+                user_id: props.comment.user.id,
                 video_id: props.comment.video_id,
                 text: props.comment.text,
                 likes: props.comment.likes +1,
@@ -17,7 +17,7 @@ const LikeDislike = (props) => {
             }}
             else if (dislike === true){
                 body = {
-                    user: props.comment.user.id,
+                    user_id: props.comment.user.id,
                     video_id: props.comment.video_id,
                     text: props.comment.text,
                     likes: props.comment.likes,
@@ -26,7 +26,7 @@ const LikeDislike = (props) => {
                 let response = await axios.put(`http://127.0.0.1:8000/api/comments/edit/${props.comment.id}/`, body)
         }
         useEffect(() => {
-            if (like !== ''){}
+            if (like === ''){}
             likeOrDislike()
         }, [like, dislike])
         function clickLike(){
