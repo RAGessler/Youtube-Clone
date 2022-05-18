@@ -20,7 +20,9 @@ const CommentList = (props) =>{
             </div>
             )}
           )}
-      <CommentForm videoId={props.videoId}  getVideoComments={props.getVideoComments}></CommentForm>
+          <div className='comment-form'>
+            <CommentForm videoId={props.videoId}  getVideoComments={props.getVideoComments}></CommentForm>
+          </div>
     </div>
     )
 }
