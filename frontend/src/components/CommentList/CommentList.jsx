@@ -5,9 +5,9 @@ import CommentForm from '../CommentForm/CommentForm';
 
 const CommentList = (props) =>{
 
-  // useState(()=>{
-  //   props.getVideoComments(props.videoId)
-  // })
+  useState(()=>{
+    props.getVideoComments(props.videoId)
+  })
 
     return(
         <div className="container">
