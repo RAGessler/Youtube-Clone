@@ -7,11 +7,14 @@ import LikeDislike from '../LikeDislike/LikeDislike';
 const Comment = (props) =>{
     const [comment, setComment] = useState(props.comment)
 
+    useEffect(()=>{
+        setComment(props.comment)
+    },[props.videoId])
+
     return(
         <div>
-            <h3>{props.comment.user.username}</h3>
-            <p>{props.comment.text}</p>
-            <p>{props.comment.id}</p>
+            <h3 className='card-title'>{props.comment.user.username}</h3>
+            <div className='card-text'>{props.comment.text}</div>
             <span>Likes:{props.comment.likes} Dislikes:{props.comment.dislikes}</span>
             <LikeDislike comment={comment} getVideoComments={props.getVideoComments} videoId={props.videoId}/>
             <ReplyList commentId={comment.id}/>

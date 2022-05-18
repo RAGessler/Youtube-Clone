@@ -1,0 +1,8 @@
+.reply{
+    border: 3px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 10px;
+    margin-left: 1em;
+    max-width: 50%;
+}
