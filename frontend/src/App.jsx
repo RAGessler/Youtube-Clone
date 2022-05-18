@@ -28,15 +28,9 @@ function App() {
 
   const [suggestedVideos, setSuggestedVideos] = useState([]);
   const [defaultSearch, setDefaultSearch] = useState('React Tutorials')
-  const [comments, setComments] = useState([])
   const [searchedVideos, setSearchedVideos] = useState([])
   const [selectedVideo, setSelectedVideo] = useState('')
   const navigate = useNavigate()
-
-  async function getVideoComments(videoId){
-    let response = await axios.get(`http://127.0.0.1:8000/api/comments/all/${videoId}/`);
-    setComments(response.data);
-  }
 
   async function searchVideos(searchQuery=defaultSearch){
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchQuery}&key=${KEY}&type=video&part=snippet&fields=items(id,snippet)&maxResults=10`)
@@ -84,8 +78,6 @@ function App() {
         <Route path="/video/:videoId" element={
         <VideoPage 
           selectedVideo={selectedVideo} 
-          comments={comments} 
-          getVideoComments={getVideoComments} 
           searchedVideos={searchedVideos} 
           getRelatedVideos={getRelatedVideos} 
           pickVideo={pickVideo}/>} 
