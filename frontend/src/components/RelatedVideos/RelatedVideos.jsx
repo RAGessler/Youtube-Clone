@@ -17,13 +17,13 @@ const RelatedVideos = (props) =>{
   }
 
     return(
-        <div className="container">
-      <h1>Related Videos</h1>
+      <div>
+      <h4>Related Videos</h4>
       <div className="container">
         <div className="row">
           {props.relatedVideos &&
             props.relatedVideos.map((video) => (
-             <div className="col-sm-3 top-buffer" key={video.id.videoId} onClick={()=>{handleSubmit(video.id.videoId)}}>
+             <div className="row top-buffer" key={video.id.videoId} onClick={()=>{handleSubmit(video.id.videoId)}}>
                <VideoCard video={video} />
                 {/* {video.snippet.title}
                 <img src={video.snippet.thumbnails.default.url} onClick={() => {handleClick(video.id.videoId)}} /> */}

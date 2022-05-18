@@ -27,12 +27,21 @@ const VideoPage = (props) => {
       }, [videoId])
 
     return ( 
-        <div>
-            <h1>{props.selectedVideo.snippet.title}</h1>
-            <div>{props.selectedVideo.snippet.description}</div>
-            <VideoPlayer videoId={props.selectedVideo.id.videoId} />
-            <CommentList videoId={props.selectedVideo.id.videoId} comments={props.comments} getVideoComments={props.getVideoComments}></CommentList>
-            <RelatedVideos relatedVideos={props.searchedVideos} getRelatedVideos={props.getRelatedVideos} pickVideo={props.pickVideo} submitVideoInfo={props.submitVideoInfo} ></RelatedVideos>
+        <div className="container">
+            <div className="row">
+                <div className="col-sm-9">
+                    <div>
+                        <VideoPlayer videoId={props.selectedVideo.id.videoId} />
+                    </div>
+                    <div className="description">{props.selectedVideo.snippet.description}</div>
+                    <div>
+                        <CommentList videoId={props.selectedVideo.id.videoId} comments={props.comments} getVideoComments={props.getVideoComments}></CommentList>
+                    </div>
+                </div>
+                <div className="col-sm-3">
+                    <RelatedVideos relatedVideos={props.searchedVideos} getRelatedVideos={props.getRelatedVideos} pickVideo={props.pickVideo} submitVideoInfo={props.submitVideoInfo} ></RelatedVideos>
+                </div>
+            </div>
 
         </div>
      );
