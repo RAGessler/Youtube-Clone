@@ -13,7 +13,7 @@ let initialValues = {
 
 const ReplyForm = (props) => {
     const [user, token] = useAuth();
-    const [commentId, setCommentId] = useState(props.comment.id)
+    const [commentId, setCommentId] = useState(props.commentId)
     const [formData, handleInputChange, handleSubmit] = useCustomForm(
         initialValues,
         postNewReply
