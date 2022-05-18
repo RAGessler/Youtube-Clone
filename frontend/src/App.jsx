@@ -4,6 +4,7 @@ import "./App.css";
 import { DATA } from "./localData";
 import axios from "axios";
 import { KEY } from "./localKey";
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
@@ -33,7 +34,7 @@ function App() {
   const navigate = useNavigate()
 
   async function searchVideos(searchQuery=defaultSearch){
-    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchQuery}&key=${KEY}&type=video&part=snippet&fields=items(id,snippet)&maxResults=10`)
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchQuery}&key=${KEY}&type=video&part=snippet&fields=items(id,snippet)&maxResults=20`)
     setSearchedVideos(response.data.items)
   }
 
@@ -69,7 +70,7 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              <HomePage videos={searchedVideos} getSuggestedVideos={searchVideos} />
+              <HomePage videos={searchedVideos} getSuggestedVideos={searchVideos} submitVideoInfo={pickVideo} />
             </PrivateRoute>
           }
         />
