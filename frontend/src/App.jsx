@@ -76,7 +76,7 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              <HomePage videos={searchedVideos} getSuggestedVideos={searchVideos} />
+              <HomePage videos={searchedVideos} getSuggestedVideos={searchVideos} submitVideoInfo={pickVideo} />
             </PrivateRoute>
           }
         />

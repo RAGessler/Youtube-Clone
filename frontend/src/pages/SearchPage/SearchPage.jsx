@@ -20,8 +20,8 @@ const SearchPage = (props) => {
         <div className='container'>
                 <div className='row'>
                     {props.videos.map((video) => (                        
-                            <div className='col-sm-3 top-buffer' key={video.id.videoId}>
-                                <VideoCard video={video}/>
+                            <div className='col-sm-3 top-buffer' key={video.id.videoId} onClick={()=>{handleSubmit(video.id.videoId)}}>
+                                <VideoCard video={video} />
                             </div>                      
                     ))}
                 </div>
