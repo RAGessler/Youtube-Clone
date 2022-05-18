@@ -79,7 +79,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/video/:videoId" element={
-        <VideoPage selectedVideo={selectedVideo} searchedVideos={searchedVideos} getRelatedVideos={getRelatedVideos} pickVideo={pickVideo} comments={comments} getVideoComments={getVideoComments}/>} 
+        <VideoPage selectedVideo={selectedVideo} searchedVideos={searchedVideos} getRelatedVideos={getRelatedVideos} pickVideo={pickVideo} comments={comments} getVideoComments={getVideoComments} submitVideoInfo={pickVideo}/>} 
           
         />
         <Route path="/results" element={<SearchPage videos={searchedVideos} submitVideoInfo={pickVideo} />} />

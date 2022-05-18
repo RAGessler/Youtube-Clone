@@ -22,13 +22,17 @@ const VideoPage = (props) => {
         props.getRelatedVideos(videoId)
     },[props.selectedVideo])
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [videoId])
+
     return ( 
         <div>
             <h1>{props.selectedVideo.snippet.title}</h1>
             <div>{props.selectedVideo.snippet.description}</div>
             <VideoPlayer videoId={props.selectedVideo.id.videoId} />
             <CommentList videoId={props.selectedVideo.id.videoId} comments={props.comments} getVideoComments={props.getVideoComments}></CommentList>
-            <RelatedVideos relatedVideos={props.searchedVideos} getRelatedVideos={props.getRelatedVideos} pickVideo={props.pickVideo} ></RelatedVideos>
+            <RelatedVideos relatedVideos={props.searchedVideos} getRelatedVideos={props.getRelatedVideos} pickVideo={props.pickVideo} submitVideoInfo={props.submitVideoInfo} ></RelatedVideos>
 
         </div>
      );
