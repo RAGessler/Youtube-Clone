@@ -5,7 +5,7 @@ import AuthContext from "../../context/AuthContext";
 import SearchBar from "../SearchBar/SearchBar";
 import "./NavBar.css";
 
-const Navbar = () => {
+const Navbar = (props) => {
   const { logoutUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
   return (
@@ -13,17 +13,17 @@ const Navbar = () => {
       <ul>
         <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <b>YouTubeClone</b>
+            <b>BlueTube</b>
           </Link>
         </li>
         <li>
-          <button><a href="/results/">Search</a></button>
+        <SearchBar searchVideos={props.searchVideos}/>
         </li>
         <li>
           {user ? (
-            <button onClick={logoutUser}>Logout</button>
+            <button className="btn btn-outline-primary btn-sm" onClick={logoutUser}>Logout</button>
           ) : (
-            <button onClick={() => navigate("/login")}>Login</button>
+            <button className="btn btn-outline-primary btn-sm" onClick={() => navigate("/login")}>Login</button>
           )}
         </li>
       </ul>

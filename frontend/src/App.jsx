@@ -20,7 +20,6 @@ import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./utils/PrivateRoute";
 import React, { useEffect, useState } from "react";
 import SearchPage from "./pages/SearchPage/SearchPage";
-import SearchBar from "./components/SearchBar/SearchBar";
 import { Navigate, useNavigate } from 'react-router-dom';
 
 
@@ -67,10 +66,8 @@ function App() {
     navigate(`/video/${selectedVideo.id.videoId}`)
     }},[selectedVideo])
   return (
-    <div>
-
-      <Navbar />
-      <SearchBar submitSearch={searchVideos}/>
+    <div className="bg">
+      <Navbar searchVideos={searchVideos}/>
       <Routes>
         <Route
           path="/"
