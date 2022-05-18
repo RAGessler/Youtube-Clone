@@ -4,12 +4,16 @@
     border-color: black;
     border-radius: 25px;
     background-color: white;
-    max-width: 70%;
+    max-width: 60%;
     margin: auto;
     margin-bottom: 1em;
-    padding: 2em;
+    padding: 1%;
 }
 
 .comment-form{
-    
+    border: 5px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 25px;
+    background-color: white;
 }

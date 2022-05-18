@@ -7,6 +7,7 @@ import CommentList from "../../components/CommentList/CommentList";
 import RelatedVideos from "../../components/RelatedVideos/RelatedVideos"
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import "../../components/VideoPlayer/VideoPlayer.css"
 
 
 const VideoPage = (props) => {
@@ -30,9 +31,9 @@ const VideoPage = (props) => {
         <div className="container">
             <div className="row">
                 <div className="col-sm-9">
-                    <div>
+
                         <VideoPlayer videoId={props.selectedVideo.id.videoId} />
-                    </div>
+
                     <div className="description">{props.selectedVideo.snippet.description}</div>
                     <div>
                         <CommentList videoId={props.selectedVideo.id.videoId} comments={props.comments} getVideoComments={props.getVideoComments}></CommentList>

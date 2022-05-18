@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import Reply from "../Reply/Reply"
 import ReplyForm from "../ReplyForm/ReplyForm"
+import "./ReplyList.css"
 
 const ReplyList = (props) => {
     const [replies, setReplies]=useState([])

@@ -40,7 +40,7 @@ const CommentForm = (props) =>{
 
     return (
         <div className="container">
-            <form className="form" onSubmit={handleSubmit}>
+            <form className="form-group" onSubmit={handleSubmit}>
                 <label>
                     Comment:{" "}
                     <input 
@@ -50,7 +50,7 @@ const CommentForm = (props) =>{
                         onChange={handleInputChange}
                     />
                 </label>
-                <button type="submit">POST</button>
+                <button type="submit" className="btn btn-primairy">POST</button>
             </form>
         </div>
     )
