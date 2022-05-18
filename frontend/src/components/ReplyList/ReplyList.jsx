@@ -15,15 +15,17 @@ const ReplyList = (props) => {
     },[])
 
     return(
-        <div className="reply-class-container">
-            <div className="individual-replies">
+        <div className="reply-container">
                 {replies.map((element)=>{
                     return(
-                        <Reply reply={element} />
+                        <div key={element.id} className='individual-reply'>
+                            <Reply reply={element} />
+                        </div>
                     )
                 })}
-            </div>
-            <ReplyForm commentId={props.commentId} getCommentReplies={getCommentReplies}/>
+                <div className="reply-form">
+                    <ReplyForm commentId={props.commentId} getCommentReplies={getCommentReplies}/>
+                </div>
         </div>
     )
 }
