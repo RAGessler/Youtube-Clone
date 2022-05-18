@@ -5,6 +5,8 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import { DATA } from "../../localData"
 import axios from "axios";
 import CommentForm from "../../components/CommentForm/CommentForm";
+import VideoCard from "../../components/VideoCard/VideoCard";
+import './HomePage.css'
 
 const HomePage = (props) => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
@@ -34,16 +36,18 @@ const HomePage = (props) => {
 },[])
 
   return (
-    <div className="container">
-      <h1>Welcome {user.first_name}! Choose from suggest videos below or type in your search above.</h1>
-      {props.videos &&
-        props.videos.map((video) => (
-          <p key={video.id.videoId}>
-            {video.snippet.title}
-            <img src={video.snippet.thumbnails.default.url} />
-          </p>
-        ))}
-        <CommentForm />
+    <div>
+      <h2>Welcome {user.first_name}!</h2>
+        <div className="container">
+          <div className="row" >
+          {props.videos &&
+            props.videos.map((video) => (
+              <div className="col-sm-3 top-buffer" key={video.id.videoId}>
+                <VideoCard className="" video={video}/>
+              </div>
+          ))}
+          </div>
+      </div>
     </div>
   );
 };
