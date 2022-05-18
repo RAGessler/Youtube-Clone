@@ -5,8 +5,8 @@ const VideoCard = (props) => {
 
     return ( 
      
-            <div className='card'>
-                <img className="" src={props.video.snippet.thumbnails.default.url} />
+            <div className='card shadow'>
+                <img src={props.video.snippet.thumbnails.medium.url} />
                 <div>
                     <h6>{props.video.snippet.title}</h6>
                 </div>
