@@ -4,13 +4,13 @@ import { useParams } from 'react-router-dom';
 import {DATA} from '../../localData'
 import SearchBar from '../../components/SearchBar/SearchBar';
 import './SearchPage.css'
+import VideoCard from '../../components/VideoCard/VideoCard';
 
 
 const SearchPage = (props) => {
     // const [videoId, setVideoId] = useState('')
 
     function handleSubmit(videoId){
-        // event.preventDefault();
         let newVideoId = videoId
         props.submitVideoInfo(newVideoId)
     }
@@ -18,15 +18,13 @@ const SearchPage = (props) => {
     console.log('search page vids', props.videos)
     return(
         <div className='container'>
-                {props.videos.map((video, element) => {
-                    return(
-                        <div className='' key={element}>
-                            <h3>{video.snippet.title}</h3>
-                            <h3>{video.id.videoId}</h3>
-                            <h4><a onClick={()=>{handleSubmit(video.id.videoId)}}>Play Video</a></h4>
-                        </div>
-                    )
-                })}
+                <div className='row'>
+                    {props.videos.map((video) => (                        
+                            <div className='col-sm-3 top-buffer' key={video.id.videoId}>
+                                <VideoCard video={video}/>
+                            </div>                      
+                    ))}
+                </div>
 
         </div>
     )

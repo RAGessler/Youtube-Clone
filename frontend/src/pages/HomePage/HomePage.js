@@ -43,7 +43,7 @@ const HomePage = (props) => {
           {props.videos &&
             props.videos.map((video) => (
               <div className="col-sm-3 top-buffer" key={video.id.videoId}>
-                <VideoCard className="" video={video}/>
+                <VideoCard video={video}/>
               </div>
           ))}
           </div>
