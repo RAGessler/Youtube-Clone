@@ -18,16 +18,16 @@ const VideoPage = (props) => {
     },[])
 
     useEffect(() => {
-        
+        props.getVideoComments(videoId)
         props.getRelatedVideos(videoId)
-    },[])
+    },[props.selectedVideo])
 
     return ( 
         <div>
             <h1>{props.selectedVideo.snippet.title}</h1>
             <div>{props.selectedVideo.snippet.description}</div>
             <VideoPlayer videoId={props.selectedVideo.id.videoId} />
-            <CommentList videoId={props.selectedVideo.id.videoId}></CommentList>
+            <CommentList videoId={props.selectedVideo.id.videoId} comments={props.comments} getVideoComments={props.getVideoComments}></CommentList>
             <RelatedVideos relatedVideos={props.searchedVideos} getRelatedVideos={props.getRelatedVideos} pickVideo={props.pickVideo} ></RelatedVideos>
 
         </div>

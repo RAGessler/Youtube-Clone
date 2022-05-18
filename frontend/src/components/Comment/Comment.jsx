@@ -9,10 +9,10 @@ const Comment = (props) =>{
 
     return(
         <div>
-            <h3>{comment.user.username}</h3>
-            <p>{comment.text}</p>
-            <p>{comment.id}</p>
-            <span>Likes:{comment.likes} Dislikes:{comment.dislikes}</span>
+            <h3>{props.comment.user.username}</h3>
+            <p>{props.comment.text}</p>
+            <p>{props.comment.id}</p>
+            <span>Likes:{props.comment.likes} Dislikes:{props.comment.dislikes}</span>
             <LikeDislike comment={comment} getVideoComments={props.getVideoComments} videoId={props.videoId}/>
             <ReplyList commentId={comment.id}/>
         </div>

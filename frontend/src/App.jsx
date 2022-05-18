@@ -31,6 +31,11 @@ function App() {
   const [searchedVideos, setSearchedVideos] = useState([])
   const [selectedVideo, setSelectedVideo] = useState('')
   const navigate = useNavigate()
+  const [comments, setComments] = useState([])
+
+  async function getVideoComments(videoId){
+    let response = await axios.get(`http://127.0.0.1:8000/api/comments/all/${videoId}/`);
+    setComments(response.data);}
 
   async function searchVideos(searchQuery=defaultSearch){
     let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchQuery}&key=${KEY}&type=video&part=snippet&fields=items(id,snippet)&maxResults=20`)
@@ -74,11 +79,8 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/video/:videoId" element={
-        <VideoPage 
-          selectedVideo={selectedVideo} 
-          searchedVideos={searchedVideos} 
-          getRelatedVideos={getRelatedVideos} 
-          pickVideo={pickVideo}/>} 
+        <VideoPage selectedVideo={selectedVideo} searchedVideos={searchedVideos} getRelatedVideos={getRelatedVideos} pickVideo={pickVideo} comments={comments} getVideoComments={getVideoComments}/>} 
+          
         />
         <Route path="/results" element={<SearchPage videos={searchedVideos} submitVideoInfo={pickVideo} />} />
       </Routes>
