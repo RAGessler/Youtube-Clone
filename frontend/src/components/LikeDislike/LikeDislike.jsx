@@ -36,9 +36,9 @@ const LikeDislike = (props) => {
             likeOrDislike()
         }, [like, dislike])
 
-    return(<div>
-        <button onClick={() => setLike(true)}>Like</button>
-        <button onClick={() => setDislike(true)}>Dislike</button>
+    return(<div className='max-height'>
+        <button className='btn btn-outline-primary btn-sm' onClick={() => setLike(true)}>Like</button>
+        <button className='btn btn-outline-primary btn-sm' onClick={() => setDislike(true)}>Dislike</button>
     </div>)
 }
 
