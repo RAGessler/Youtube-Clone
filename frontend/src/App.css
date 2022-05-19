@@ -33,6 +33,20 @@ button:hover {
   background-color: steelblue;
 }
 
+.comment-heading{
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+.comment-body{
+	font-size: .8rem;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.comment{
+  background-color: #82b7d352;
+  }
+
 .container {
   margin: 0 auto;
   max-width: 600px;
@@ -59,4 +73,23 @@ button:hover {
 
 .bg {
   background-color: #0777b352
+}
+
+.btn-sm {
+  padding: .125rem .35rem !important;
+  font-size: .75rem !important;
+  border-radius: .2rem !important;
+  margin-left: .5rem !important;
+}
+.likes {
+  font-size: .75rem;
+  margin-left: .5rem;
+}
+
+.replies{
+  margin-left: 1rem;
+}
+.comment-box{
+  padding-left: 1rem;
+  padding-bottom: .5rem;
 }

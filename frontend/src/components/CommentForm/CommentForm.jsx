@@ -40,17 +40,16 @@ const CommentForm = (props) =>{
 
     return (
         <div className="container">
-            <form className="form-group" onSubmit={handleSubmit}>
-                <label>
-                    Comment:{" "}
+            <form className="form-group row" onSubmit={handleSubmit}>
                     <input 
                         type="text"
                         name="text"
                         value={formData.text}
                         onChange={handleInputChange}
+                        placeholder={`Commenting as ${user.username}`}
+                        className="col-sm-10"
                     />
-                </label>
-                <button type="submit" className="btn btn-primairy">POST</button>
+                <button type="submit" className="col-sm-2 btn btn-primary">POST</button>
             </form>
         </div>
     )

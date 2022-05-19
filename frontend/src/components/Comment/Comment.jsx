@@ -12,11 +12,11 @@ const Comment = (props) =>{
     },[props.videoId])
 
     return(
-        <div>
-            <h3 className='card-title'>{props.comment.user.username}</h3>
-            <div className='card-text'>{props.comment.text}</div>
-            <span>Likes:{props.comment.likes} Dislikes:{props.comment.dislikes}</span>
-            <LikeDislike comment={comment} getVideoComments={props.getVideoComments} videoId={props.videoId}/>
+        <div className='comment-box shadow'>
+            <h5 className='comment-heading'>{props.comment.user.username}</h5>
+            <div className='comment-body'>{props.comment.text}</div>
+            <span className='likes'>Likes:{props.comment.likes} Dislikes:{props.comment.dislikes}</span>
+            <LikeDislike comment={comment} getVideoComments={props.getVideoComments} videoId={props.videoId} />
             <ReplyList commentId={comment.id}/>
         </div>
     )

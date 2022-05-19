@@ -15,18 +15,27 @@ const ReplyList = (props) => {
         getCommentReplies(props.commentId)
     },[])
 
+
+
+
     return(
-        <div className="reply-container">
+        <div className="replies">
+            <details>
+                <summary>Reply</summary>
+                <ReplyForm commentId={props.commentId} getCommentReplies={getCommentReplies}/>
+            </details>
+            <details>
+                <summary>View Replies</summary>
                 {replies.map((element)=>{
                     return(
-                        <div key={element.id} className='individual-reply'>
+                        <div key={element.id} className='replies'>
                             <Reply reply={element} />
                         </div>
                     )
                 })}
-                <div className="reply-form">
-                    <ReplyForm commentId={props.commentId} getCommentReplies={getCommentReplies}/>
-                </div>
+            </details>
+            <div className="replies">
+            </div>
         </div>
     )
 }

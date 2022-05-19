@@ -34,14 +34,10 @@ const ReplyForm = (props) => {
         }
     }
     return(
-        <div className="continer">
-            <form className="form" onSubmit={handleSubmit}>
-                <label>Reply:{""}
-                <input type="text" name="text" value={formData.text} onChange={handleInputChange} />
-                </label>
-                <button type="submit">Reply</button>
+            <form className="form-group row" onSubmit={handleSubmit}>
+                <input className="col-sm-8" type="text" name="text" value={formData.text} placeholder="Reply" onChange={handleInputChange} />
+                <button className="col-sm-2 btn btn-primary btn-sm" type="submit">Reply</button>
             </form>
-        </div>
     )
 }
 
