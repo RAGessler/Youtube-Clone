@@ -35,7 +35,7 @@ const ReplyForm = (props) => {
     }
     return(
             <form className="form-group row" onSubmit={handleSubmit}>
-                <input className="col-sm-8" type="text" name="text" value={formData.text} placeholder="Reply" onChange={handleInputChange} />
+                <input className="col-sm-8" type="text" name="text" value={formData.text} placeholder={`Reply as ${user.username}`} onChange={handleInputChange} />
                 <button className="col-sm-2 btn btn-primary btn-sm" type="submit">Reply</button>
             </form>
     )
