@@ -6,7 +6,7 @@ const VideoPlayer = (props)=>{
 
     return(
     <div className='video-player'>
-        <iframe style={{height:"75vh", width:"100vw"}} classname="iframe" src={`https://www.youtube.com/embed/${props.videoId}`} frameBorder="0"></iframe>
+        <iframe style={{height:"60vh", width:"60vw"}} classname="iframe" src={`https://www.youtube.com/embed/${props.videoId}`} frameBorder="0"></iframe>
     </div>
     
         )
