@@ -1,19 +1,19 @@
 import React, { useState } from "react"
-import { Navigate, useNavigate } from "react-router-dom"
+
 import useAuth from "../../hooks/useAuth"
 import useCustomForm from "../../hooks/useCustomForm"
 import axios from 'axios'
-import { useParams } from "react-router-dom";
+
 
 let initialValues = {
     user_id: '2',
-    text: 'some text',
+    text: '',
     comment_id: '2'
 }
 
 const ReplyForm = (props) => {
     const [user, token] = useAuth();
-    const [commentId, setCommentId] = useState(props.commentId)
+    const [commentId] = useState(props.commentId)
     const [formData, handleInputChange, handleSubmit] = useCustomForm(
         initialValues,
         postNewReply
