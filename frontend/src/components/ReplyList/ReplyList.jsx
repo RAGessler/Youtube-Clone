@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import Reply from "../Reply/Reply"
 import ReplyForm from "../ReplyForm/ReplyForm"
 import "./ReplyList.css"
+import { URL_HOST } from "../../urlHost";
 
 const ReplyList = (props) => {
     const [replies, setReplies]=useState([])

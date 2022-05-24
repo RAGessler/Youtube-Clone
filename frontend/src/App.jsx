@@ -5,6 +5,7 @@ import { DATA } from "./localData";
 import axios from "axios";
 import { KEY } from "./localKey";
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { URL_HOST } from "./urlHost";
 
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
@@ -27,7 +28,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 function App() {
 
   const [suggestedVideos, setSuggestedVideos] = useState([]);
-  const [defaultSearch, setDefaultSearch] = useState('React Tutorials')
+  const [defaultSearch, setDefaultSearch] = useState('People Are Awesome')
   const [searchedVideos, setSearchedVideos] = useState([])
   const [selectedVideo, setSelectedVideo] = useState('')
   const navigate = useNavigate()

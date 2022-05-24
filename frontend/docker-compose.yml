@@ -3,8 +3,6 @@ version: '3.9'
 services:
   youtube_clone_frontend:
     container_name: frontend
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
+    image: alexcolvin/ytcfrontend:latest
     ports:
-      - "8002:3000"
+      - "80:80"

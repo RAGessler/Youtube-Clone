@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { URL_HOST } from "../../urlHost";
 
 const LikeDislike = (props) => {
     const [like, setLike] = useState(false)
