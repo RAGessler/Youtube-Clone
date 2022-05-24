@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-
+import { URL_HOST } from "../../urlHost";
 import useAuth from "../../hooks/useAuth"
 import useCustomForm from "../../hooks/useCustomForm"
 import axios from 'axios'
@@ -21,7 +21,7 @@ const ReplyForm = (props) => {
     async function postNewReply(){
         try {
             formData.comment_id = commentId
-            let response = await axios.post(`http://127.0.0.1:8000/api/replies/post/${commentId}/`, formData, {
+            let response = await axios.post(`${URL_HOST}/api/replies/post/${commentId}/`, formData, {
                 headers: {
                     Authorization: 'Bearer '+ token
                 }

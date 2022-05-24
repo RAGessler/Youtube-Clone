@@ -5,6 +5,7 @@ import { DATA } from "./localData";
 import axios from "axios";
 import { KEY } from "./localKey";
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { URL_HOST } from "./urlHost";
 
 // Pages Imports
 import HomePage from "./pages/HomePage/HomePage";
@@ -27,14 +28,14 @@ import { Navigate, useNavigate } from 'react-router-dom';
 function App() {
 
   const [suggestedVideos, setSuggestedVideos] = useState([]);
-  const [defaultSearch, setDefaultSearch] = useState('React Tutorials')
+  const [defaultSearch, setDefaultSearch] = useState('People Are Awesome')
   const [searchedVideos, setSearchedVideos] = useState([])
   const [selectedVideo, setSelectedVideo] = useState('')
   const navigate = useNavigate()
   const [comments, setComments] = useState([])
 
   async function getVideoComments(videoId){
-    let response = await axios.get(`http://127.0.0.1:8000/api/comments/all/${videoId}/`);
+    let response = await axios.get(`${URL_HOST}/api/comments/all/${videoId}/`);
     setComments(response.data);}
 
   async function searchVideos(searchQuery=defaultSearch){

@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth"
 import useCustomForm from "../../hooks/useCustomForm"
 import axios from 'axios'
 import { useParams } from "react-router-dom";
+import { URL_HOST } from "../../urlHost"
 
 let initialValues = {
         user: "2",
@@ -24,7 +25,7 @@ const CommentForm = (props) =>{
     async function postNewComment(){
         try {
             formData.video_id=props.videoId
-            let response = await axios.post('http://127.0.0.1:8000/api/comments/post/', formData, {
+            let response = await axios.post(`${URL_HOST}/api/comments/post/`, formData, {
                 headers: {
                     Authorization: 'Bearer ' + token
                 }
