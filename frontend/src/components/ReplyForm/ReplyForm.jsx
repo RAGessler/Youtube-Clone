@@ -21,7 +21,7 @@ const ReplyForm = (props) => {
     async function postNewReply(){
         try {
             formData.comment_id = commentId
-            let response = await axios.post(`http://127.0.0.1:8000/api/replies/post/${commentId}/`, formData, {
+            let response = await axios.post(`${URL_HOST}/api/replies/post/${commentId}/`, formData, {
                 headers: {
                     Authorization: 'Bearer '+ token
                 }

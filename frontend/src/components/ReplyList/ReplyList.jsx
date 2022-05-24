@@ -8,7 +8,7 @@ const ReplyList = (props) => {
     const [replies, setReplies]=useState([])
 
     async function getCommentReplies(commentId){
-        let response = await axios.get(`http://127.0.0.1:8000/api/replies/${commentId}/view`);
+        let response = await axios.get(`${URL_HOST}/api/replies/${commentId}/view`);
         setReplies(response.data);}
 
     useState(()=>{

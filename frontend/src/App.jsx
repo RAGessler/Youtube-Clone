@@ -34,7 +34,7 @@ function App() {
   const [comments, setComments] = useState([])
 
   async function getVideoComments(videoId){
-    let response = await axios.get(`http://127.0.0.1:8000/api/comments/all/${videoId}/`);
+    let response = await axios.get(`${URL_HOST}/api/comments/all/${videoId}/`);
     setComments(response.data);}
 
   async function searchVideos(searchQuery=defaultSearch){
